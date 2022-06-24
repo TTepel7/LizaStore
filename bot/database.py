@@ -13,4 +13,4 @@ class Person(Model):
 db.create_tables([Person])
        
 
-Person(tele_name = 'Admin',role = 'Admin').save()
+Person(tele_name = 'KodaiRunoi',role = 'Admin').save()
