@@ -18,11 +18,11 @@ bot = telebot.TeleBot('5313426341:AAFM1oAtKlDGmyFVzmrWPAfSVlovGL59vO4')
 
 
 # Реакция на команду старт
-@bot.message_handler(commands=["start"])
+@bot.message_handler(commands=["Добавить"])
 def start(m, res=False):
 
     mesg = bot.send_message(
-        m.chat.id, "Приветствую,{0}!".format(m.from_user.username))
+        m.chat.id, "Приветствую,{0}! Отправьте файл".format(m.from_user.username))
 
     bot.register_next_step_handler(mesg, handle_docs_photo)
 
@@ -46,7 +46,7 @@ def handle_docs_photo(message):
         os.remove('temp/{0}'.format(message.document.file_name))
 
         # Уведомляем о том что фаил  загружен 'Фаил загружен! Теоретически....'
-        bot.reply_to(message, 'Фаил загружен! Теоретически....')
+        bot.reply_to(message, 'Файл загружен! Теоретически....')
 
     except Exception as e:
         bot.reply_to(message, e)
