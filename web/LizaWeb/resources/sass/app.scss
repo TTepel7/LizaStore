@@ -6,3 +6,22 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+.auth-container{
+    background-image: url("../img/login_bg.jpg");
+    min-height: 93vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+}
+
+.auth-form .btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus,
+.form-check-input:checked {
+    background-color: #fe7200;
+    border-color: #fe7200;
+}

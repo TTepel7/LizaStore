@@ -10252,3 +10252,21 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.auth-container {
+  background-image: url(/images/login_bg.jpg?5c0be8c7ae4d81d5472b918daab28082);
+  min-height: 93vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+}
+
+.auth-form .btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus,
+.form-check-input:checked {
+  background-color: #fe7200;
+  border-color: #fe7200;
+}
