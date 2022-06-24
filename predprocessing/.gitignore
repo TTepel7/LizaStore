@@ -1,2 +1,7 @@
 img/
 Итоговый датасет/
+files.json
+keras_tuner/
+best_model.h5
+test.csv
+train.csv
