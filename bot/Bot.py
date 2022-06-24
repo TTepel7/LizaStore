@@ -18,7 +18,7 @@ bot = telebot.TeleBot('5313426341:AAFM1oAtKlDGmyFVzmrWPAfSVlovGL59vO4')
 # Реакция на команду старт
 @bot.message_handler(commands=["start"])
 def start(m, res=False):
-    bot.send_message(m.chat.id, 'Отправь фотографию, и я её загружу )')
+    bot.send_message(m.chat.id, m.from_user.username)
 
 # Реакция на отправку картинки(документа)
 @bot.message_handler(content_types=['document'])
@@ -36,7 +36,7 @@ def handle_docs_photo(message):
         os.remove('temp/{0}'.format(message.document.file_name))#Удаление фаила из временной папки
 
        
-        bot.reply_to(message,'Фаил загружен! Теоретически....')#Уведомляем о том что фаил  загружен
+        bot.reply_to(message,'Фаил загружен! Теоретически....')#Уведомляем о том что фаил  загружен 'Фаил загружен! Теоретически....'
     except Exception as e:
         bot.reply_to(message, e)
 
