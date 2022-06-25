@@ -23,7 +23,7 @@
                     <div class="col">
                         <div class="card shadow-sm">
                             <img class="card-img-top" src="{{$m['disk_url']}}" alt="">
-                            <div class="card-body">
+                            <div class="card-body auth-form">
                                 <h5 class="card-title">{{$m['name']}}</h5>
                                 <a href="{{$m['disk_url']}}" target="_blank" class="btn btn-primary">Скачать</a>
                             </div>
