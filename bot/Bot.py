@@ -18,7 +18,7 @@ bot = telebot.TeleBot('5313426341:AAFM1oAtKlDGmyFVzmrWPAfSVlovGL59vO4')
 
 
 # Реакция на команду старт
-@bot.message_handler(commands=["Добавить"])
+@bot.message_handler(commands=["добавить"])
 def start(m, res=False):
 
     mesg = bot.send_message(
@@ -42,15 +42,20 @@ def handle_docs_photo(message):
 
         y.upload('temp/{0}'.format(message.document.file_name),
                  'LAbot/{0}'.format(message.document.file_name))  # Загрузка фаила на Я.Диск
+        b = y.publish('LAbot/{0}'.format(message.document.file_name))   
+              
         # Удаление фаила из временной папки
         os.remove('temp/{0}'.format(message.document.file_name))
 
-        # Уведомляем о том что фаил  загружен 'Фаил загружен! Теоретически....'
-        bot.reply_to(message, 'Файл загружен! Теоретически....')
+        # Уведомляем о том что фаил  загружен 'Фаил загружен! Теоретически....' и даём ссылку на файл
+        bot.reply_to(message, 'Файл загружен! Теоретически....Ссылка:{0}'.format( y.get_download_link('LAbot/{0}'.format(message.document.file_name))))
+        
+        
+        
 
     except Exception as e:
         bot.reply_to(message, e)
 
 
-# %%
+print('Бот запущен')
 bot.polling(none_stop=True, interval=0)  # Запуск бота
