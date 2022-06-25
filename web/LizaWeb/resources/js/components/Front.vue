@@ -36,7 +36,7 @@
                                 <h4 class="card-title">
                                     <a :href="m.disk_url" target="_blank">{{ m.name }}</a>
                                 </h4>
-                                <p class="card-text">{{ m.description }}</p>
+                                <a v-if="m.description" :href="m.description" target="_blank">Гео метка</a>
                                 <span class="badge bg-secondary m-1" v-for="cat in m.categories">{{cat.name}}</span>
                                 <p class="mb-0" v-if="m.telegram" >Загружено: {{m.telegram}}</p>
                                 <p class="mb-0">Загружено {{new Date(m.created_at).toLocaleDateString('ru')}}</p>
