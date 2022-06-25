@@ -19,10 +19,10 @@
 <h4>Основной стек технологий:</h4>
 <ul>
     <li>Tensorflow, Keras.</li>
-	<li>HTML, CSS, JavaScript.</li>
-	<li>PHP 7, MySQL.</li>
-	<li>LESS, SASS, PostCSS.</li>
-	<li>React (Next.js), Vue (Nuxt.js), Angular.</li>
+	<li>HTML, CSS, JavaScript</li>
+	<li>PHP 7.4, MySQL.</li>
+	<li>SASS/li>
+	<li>Vue.js, Bootstrap 5.</li>
 	<li>Git, Gitlab.</li>
 	<li> Telebot, yadisk.</li>
   
@@ -38,6 +38,33 @@
 ------------
 Доступно на всех телефонах и ПК с доступом к сети Интернет
 
+Подключение web-сайта
+------------
+для запуска необходимо в папке web/LizaWeb настроить файл `.env`, затем прописать следующиие команды
+
+```
+composer install
+npm install
+npm run prod
+php artisan migrate --seed
+php artisan serve
+```
+
+в файле env важно добавить ключи
+```
+YANDEX_DISK_BASE_PATH=/
+YANDEX_DISK_OAUTH_TOKEN=<токен Oauth для яндекс диска>
+
+//подключение к БД
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=lizaalert
+DB_USERNAME=root
+DB_PASSWORD=1234
+```
+
+### Подключение telegram-бота name
 
 Подключение бота
 ------------
