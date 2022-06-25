@@ -53,6 +53,9 @@
                             @endif
                         @else
                             <li class="nav-item">
+                                <a class="nav-link" href="{{ route('archive') }}">Архив</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ route('upload') }}">Загрузить фото</a>
                             </li>
 

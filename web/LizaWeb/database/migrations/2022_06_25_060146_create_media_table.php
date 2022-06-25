@@ -19,6 +19,7 @@ class CreateMediaTable extends Migration
             $table->text('description')->nullable();
             $table->string('telegram')->nullable();
             $table->text('disk_url')->nullable();
+            $table->boolean('published')->default(0);
             $table->timestamps();
         });
     }

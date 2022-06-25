@@ -5319,6 +5319,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -5346,6 +5361,12 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
+    set_published: function set_published(id) {
+      axios.put('/api/media/pub/' + id).then(function (response) {//
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
     loadCategories: function loadCategories() {
       var _this = this;
 
@@ -27992,6 +28013,8 @@ var render = function () {
             [
               _c("h1", [_vm._v("Фильтры")]),
               _vm._v(" "),
+              _vm._m(0),
+              _vm._v(" "),
               _vm._l(_vm.categories, function (category, index) {
                 return _c("div", { staticClass: "form-check" }, [
                   _c("input", {
@@ -28049,11 +28072,11 @@ var render = function () {
                     },
                     [
                       _vm._v(
-                        "\n                    " +
+                        "\n                        " +
                           _vm._s(category.name) +
                           " (" +
                           _vm._s(category.media_count) +
-                          ")\n                "
+                          ")\n                    "
                       ),
                     ]
                   ),
@@ -28111,7 +28134,13 @@ var render = function () {
                           )
                         }),
                         _vm._v(" "),
-                        _c("p", [
+                        m.telegram
+                          ? _c("p", { staticClass: "mb-0" }, [
+                              _vm._v("Загружено: " + _vm._s(m.telegram)),
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mb-0" }, [
                           _vm._v(
                             "Загружено " +
                               _vm._s(
@@ -28120,11 +28149,73 @@ var render = function () {
                           ),
                         ]),
                         _vm._v(" "),
-                        m.telegram
-                          ? _c("p", [
-                              _vm._v("Загружено: " + _vm._s(m.telegram)),
-                            ])
-                          : _vm._e(),
+                        _c("div", { staticClass: "form-check" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: m.published,
+                                expression: "m.published",
+                              },
+                            ],
+                            staticClass: "form-check-input",
+                            attrs: { type: "checkbox", id: "public" + m.id },
+                            domProps: {
+                              checked: Array.isArray(m.published)
+                                ? _vm._i(m.published, null) > -1
+                                : m.published,
+                            },
+                            on: {
+                              change: [
+                                function ($event) {
+                                  var $$a = m.published,
+                                    $$el = $event.target,
+                                    $$c = $$el.checked ? true : false
+                                  if (Array.isArray($$a)) {
+                                    var $$v = null,
+                                      $$i = _vm._i($$a, $$v)
+                                    if ($$el.checked) {
+                                      $$i < 0 &&
+                                        _vm.$set(
+                                          m,
+                                          "published",
+                                          $$a.concat([$$v])
+                                        )
+                                    } else {
+                                      $$i > -1 &&
+                                        _vm.$set(
+                                          m,
+                                          "published",
+                                          $$a
+                                            .slice(0, $$i)
+                                            .concat($$a.slice($$i + 1))
+                                        )
+                                    }
+                                  } else {
+                                    _vm.$set(m, "published", $$c)
+                                  }
+                                },
+                                function ($event) {
+                                  return _vm.set_published(m.id)
+                                },
+                              ],
+                            },
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "label",
+                            {
+                              staticClass: "form-check-label",
+                              attrs: { for: "public" + m.id },
+                            },
+                            [
+                              _vm._v(
+                                "\n                                    Публикация для СМИ\n                                "
+                              ),
+                            ]
+                          ),
+                        ]),
                       ],
                       2
                     ),
@@ -28171,7 +28262,35 @@ var render = function () {
     ]
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mb-2" }, [
+      _c("h5", [_vm._v("Год")]),
+      _vm._v(" "),
+      _c(
+        "select",
+        {
+          staticClass: "form-select form-select-sm",
+          attrs: { "aria-label": ".form-select-sm example" },
+        },
+        [
+          _c("option", { attrs: { selected: "" } }, [_vm._v("Выбрать год")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "2020" } }, [_vm._v("2020")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "2021" } }, [_vm._v("2021")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "2022" } }, [_vm._v("2022")]),
+          _vm._v(" "),
+          _c("option", { attrs: { value: "2023" } }, [_vm._v("2023")]),
+        ]
+      ),
+    ])
+  },
+]
 render._withStripped = true
 
 

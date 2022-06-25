@@ -110,7 +110,9 @@ class MediaController extends Controller
      */
     public function update(Request $request, Media $media)
     {
-        //
+        $media['published']=!$media['published'];
+        $media->save();
+        return ['message'=>'ok'];
     }
 
     /**
