@@ -18,7 +18,7 @@ class MediaController extends Controller
     public function index()
     {
         $cat_filter= request()->input('categories', []);
-        $media=Media::with('categories')->get();
+        $media=Media::with('categories')->orderBy('id', 'DESC')->get();
         $media_output=[];
         foreach ($media as $m){
             $cat=[];
@@ -114,7 +114,23 @@ class MediaController extends Controller
         $media->save();
         return ['message'=>'ok'];
     }
+    public function update_tag(Request $request, Media $media)
+    {
+        $validated= $request->validate([
+            'name'=>'string|required|max:255']);
 
+        $cat=Category::where('name',$validated['name'])->first();
+        if(isset($cat)){
+            $media->categories()->attach($cat['id']);
+        }else{
+            $cat=Category::create([
+                'name'=>$validated['name']
+            ]);
+            $media->categories()->attach($cat['id']);
+        }
+        $media->save();
+        return ['message'=>'ok'];
+    }
     /**
      * Remove the specified resource from storage.
      *
