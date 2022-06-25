@@ -81,14 +81,7 @@ DB_PASSWORD=1234
 
 Для запуска скрипта мониторинга:
 1) Запустите yad_monitor.py с установленой библиотекой yadisk, и файлом model_script.py в этой же директории
-~~~
-sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get install name1
-sudo apt-get install mariadb-client mariadb-server
-git clone https://github.com/Sinclear/default_readme
-cd default_readme
-...
+
 ~~~
 
 РАЗРАБОТЧИКИ
