@@ -36,12 +36,10 @@ class IndexController extends Controller
     public function upload_store(Request $request)
     {
         $validated=$request->validate([
-           'name'=>'string|required|max:255',
             'file'=>'image|required'
         ]);
 
-
-        Storage::disk('yandex-disk')->put('LAbot/'.$validated['name'],  file_get_contents($validated['file']->getRealPath()));
+        Storage::disk('yandex-disk')->put('LAbot/'.$validated['file']->getClientOriginalName(),  file_get_contents($validated['file']->getRealPath()));
         return redirect()->route('archive');
     }
 }

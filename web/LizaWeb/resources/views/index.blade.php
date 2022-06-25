@@ -17,8 +17,9 @@
 
     <div class="album py-5 bg-light">
         <div class="container">
-            @foreach($media as $m)
+
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    @foreach($media as $m)
                     <div class="col">
                         <div class="card shadow-sm">
                             <img class="card-img-top" src="{{$m['disk_url']}}" alt="">
@@ -28,9 +29,8 @@
                             </div>
                         </div>
                     </div>
-
+                    @endforeach
                 </div>
-            @endforeach
         </div>
     </div>
 @endsection

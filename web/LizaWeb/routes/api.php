@@ -22,3 +22,4 @@ Route::get('categories', [\App\Http\Controllers\CategoryController::class,'index
 Route::get('media', [\App\Http\Controllers\MediaController::class,'index']);
 Route::post('media', [\App\Http\Controllers\MediaController::class,'store']);
 Route::put('media/pub/{media}', [\App\Http\Controllers\MediaController::class,'update']);
+Route::put('media/tag/{media}', [\App\Http\Controllers\MediaController::class,'update_tag']);

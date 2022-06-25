@@ -30,7 +30,7 @@
                     <div class="col-lg-4 col-md-6 mb-4" v-for="(m,index) in media.slice((page-1)*9,(page-1)*9+9)">
                         <div class="card h-100">
                             <a href="#">
-                                <img class="card-img-top" :src="m.disk_url" alt="">
+                                <img class="card-img-top image_archive" :src="m.disk_url" alt="">
                             </a>
                             <div class="card-body">
                                 <h4 class="card-title">
@@ -38,6 +38,7 @@
                                 </h4>
                                 <a v-if="m.description" :href="m.description" target="_blank">Гео метка</a>
                                 <span class="badge bg-secondary m-1" v-for="cat in m.categories">{{cat.name}}</span>
+                                <span class="badge bg-secondary m-1" @click="add_tag(m.id)">+</span>
                                 <p class="mb-0" v-if="m.telegram" >Загружено: {{m.telegram}}</p>
                                 <p class="mb-0">Загружено {{new Date(m.created_at).toLocaleDateString('ru')}}</p>
                                 <div class="form-check" >
@@ -97,7 +98,21 @@
         },
 
         methods: {
+            add_tag(id){
+              let tag_name=prompt('Введите название тэга');
+                axios.put('/api/media/tag/'+id,{
+                    'name':tag_name
+                })
+                    .then((response) => {
+                        this.loadCategories();
+                        this.loadMedia();
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+            },
             set_published(id){
+
                 axios.put('/api/media/pub/'+id)
                     .then((response) => {
                         //

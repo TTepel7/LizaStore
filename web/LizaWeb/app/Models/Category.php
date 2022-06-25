@@ -11,4 +11,5 @@ class Category extends Model
     public function media(){
         return $this->belongsToMany(Category::class, 'media_categories');
     }
+    protected $fillable=['name'];
 }
