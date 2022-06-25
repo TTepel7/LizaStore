@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Media;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -14,7 +15,8 @@ class IndexController extends Controller
      */
     public function index()
     {
-        return view('index');
+        $media=Media::where('published',1)->take(9)->get();
+        return view('index')->with('media',$media);
     }
 
     /**
