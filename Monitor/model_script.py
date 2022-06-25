@@ -34,11 +34,20 @@ def predict(image_path):
 #http://archive.lizaalert.xsph.ru/api/media   
 
 
-def to_site(name= '',token = '',desc = '',tele= '',disk_url= '',tags = []):
+def to_site(name,token,desc,tele,disk_url,tags):
     url = re.post('http://archive.lizaalert.xsph.ru/api/media',json=
     {'name':name,
     'api_token':token,
     'description':desc,
+    'telegram':tele,
+    'disk_url':disk_url,
+    'tags':tags},headers={'Content-Type':'application/json','Accept':'application/json'})
+    print(url.text)
+
+def to_site_without(name,token,tele,disk_url,tags):
+    url = re.post('http://archive.lizaalert.xsph.ru/api/media',json=
+    {'name':name,
+    'api_token':token,
     'telegram':tele,
     'disk_url':disk_url,
     'tags':tags},headers={'Content-Type':'application/json','Accept':'application/json'})

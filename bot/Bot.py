@@ -8,6 +8,8 @@ import os
 from PIL import Image
 from PIL.ExifTags import TAGS
 
+
+
 # Подключаемся к Я.Диску и проверяем токен
 y = yadisk.YaDisk(token="AQAAAABicHdlAAgCbDVt0snMj0oCnjhFKbp8Uh4")
 y.check_token()
@@ -65,6 +67,9 @@ def handle_docs_photo(message):
     except Exception as e:
         bot.reply_to(message, e)
 
-
-print('Бот запущен')
-bot.polling(none_stop=True, interval=1)  # Запуск бота
+while True:
+    try:
+        print('Бот запущен')
+        bot.polling(none_stop=True, interval=1)  # Запуск бота
+    except:
+        continue
