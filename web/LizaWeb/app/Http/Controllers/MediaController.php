@@ -18,7 +18,7 @@ class MediaController extends Controller
     public function index()
     {
         $cat_filter= request()->input('categories', []);
-        $media=Media::with('categories')->get();
+        $media=Media::with('categories')->orderBy('id', 'DESC')->get();
         $media_output=[];
         foreach ($media as $m){
             $cat=[];
