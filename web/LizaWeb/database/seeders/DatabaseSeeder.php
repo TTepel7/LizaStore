@@ -18,36 +18,6 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         Category::create([
-            'name' => 'Фото'
-        ]);
-        Category::create([
-            'name' => 'Видео'
-        ]);
-        Category::create([
-            'name' => 'Весна'
-        ]);
-        Category::create([
-            'name' => 'Лето'
-        ]);
-        Category::create([
-            'name' => 'Осень'
-        ]);
-        Category::create([
-            'name' => 'Зима'
-        ]);
-        Category::create([
-            'name' => 'Город'
-        ]);
-        Category::create([
-            'name' => 'Лес'
-        ]);
-        Category::create([
-            'name' => 'День'
-        ]);
-        Category::create([
-            'name' => 'Ночь'
-        ]);
-        Category::create([
             'name' => 'Авиа'
         ]);
         Category::create([
@@ -70,6 +40,33 @@ class DatabaseSeeder extends Seeder
         ]);
         Category::create([
             'name' => 'Шерп'
+        ]);
+        Category::create([
+            'name' => 'День'
+        ]);
+        Category::create([
+            'name' => 'Ночь'
+        ]);
+        Category::create([
+            'name' => 'Рассвет/закат'
+        ]);
+        Category::create([
+            'name' => 'Зима'
+        ]);
+        Category::create([
+            'name' => 'Весна'
+        ]);
+        Category::create([
+            'name' => 'Лето'
+        ]);
+        Category::create([
+            'name' => 'Осень'
+        ]);
+        Category::create([
+            'name' => 'Лес'
+        ]);
+        Category::create([
+            'name' => 'Город'
         ]);
 
         User::create([

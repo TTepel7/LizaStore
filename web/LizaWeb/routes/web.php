@@ -17,4 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['register' => false]);
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\IndexController::class, 'index'])->name('index');
+Route::get('/upload', [App\Http\Controllers\IndexController::class, 'upload'])->name('upload');
+Route::post('/upload', [App\Http\Controllers\IndexController::class, 'upload_store'])->name('upload_store');
+Route::get('/archive', [App\Http\Controllers\HomeController::class, 'index'])->name('archive');

@@ -28106,7 +28106,7 @@ var render = function () {
                         _vm._l(m.categories, function (cat) {
                           return _c(
                             "span",
-                            { staticClass: "badge bg-secondary" },
+                            { staticClass: "badge bg-secondary m-1" },
                             [_vm._v(_vm._s(cat.name))]
                           )
                         }),

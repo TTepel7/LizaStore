@@ -10252,11 +10252,14 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-.auth-container {
+.main-container {
   background-image: url(/images/login_bg.jpg?5c0be8c7ae4d81d5472b918daab28082);
   min-height: 93vh;
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+.auth-container {
   display: flex;
   align-items: center;
 }

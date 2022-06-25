@@ -27,7 +27,7 @@
                                     <a :href="m.disk_url" target="_blank">{{ m.name }}</a>
                                 </h4>
                                 <p class="card-text">{{ m.description }}</p>
-                                <span class="badge bg-secondary" v-for="cat in m.categories">{{cat.name}}</span>
+                                <span class="badge bg-secondary m-1" v-for="cat in m.categories">{{cat.name}}</span>
                                 <p>Загружено {{new Date(m.created_at).toLocaleDateString('ru')}}</p>
                                 <p v-if="m.telegram">Загружено: {{m.telegram}}</p>
                             </div>
