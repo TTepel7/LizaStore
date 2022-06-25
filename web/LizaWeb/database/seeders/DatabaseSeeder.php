@@ -70,7 +70,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-           'name'=>'Елизавета',
+           'name'=>'Анастасия',
            'email'=>'Liza@alert.ru',
            'password'=>Hash::make('qwerty52')
         ]);
