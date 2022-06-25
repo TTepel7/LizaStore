@@ -20,3 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('categories', [\App\Http\Controllers\CategoryController::class,'index']);
 Route::get('media', [\App\Http\Controllers\MediaController::class,'index']);
+Route::post('media', [\App\Http\Controllers\MediaController::class,'store']);

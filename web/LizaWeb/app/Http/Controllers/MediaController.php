@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Media;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 class MediaController extends Controller
 {
@@ -46,11 +48,35 @@ class MediaController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
-        //
+        $validated= $request->validate([
+           'name'=>'string|required|max:255',
+           'api_token'=>'string|required',
+           'description'=>'string',
+           'telegram'=>'string|max:255',
+            'disk_url'=>'url',
+            'tags'=>'array',
+            'tags.*'=>'integer|exists:categories,id'
+        ]);
+        if ($validated['api_token']!='qwerty52'){
+            return response()->json(['error'=>'Неверный токен'],403);
+        }
+        $img=file_get_contents($validated['disk_url']);
+        Storage::disk('public')->put($validated['name'], $img);
+        $media=Media::create([
+            'name'=>$validated['name'],
+            'description'=>$validated['description']??'',
+            'disk_url'=>'/storage/'.$validated['name'],
+            'telegram'=>$validated['telegram']??''
+        ]);
+        foreach ($validated['tags'] as $t){
+            $media->categories()->attach($t);
+        }
+        return $media;
+
     }
 
     /**

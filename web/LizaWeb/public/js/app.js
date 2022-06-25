@@ -5317,6 +5317,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -28090,9 +28092,11 @@ var render = function () {
                       { staticClass: "card-body" },
                       [
                         _c("h4", { staticClass: "card-title" }, [
-                          _c("a", { attrs: { href: "#" } }, [
-                            _vm._v(_vm._s(m.name)),
-                          ]),
+                          _c(
+                            "a",
+                            { attrs: { href: m.disk_url, target: "_blank" } },
+                            [_vm._v(_vm._s(m.name))]
+                          ),
                         ]),
                         _vm._v(" "),
                         _c("p", { staticClass: "card-text" }, [
@@ -28106,6 +28110,21 @@ var render = function () {
                             [_vm._v(_vm._s(cat.name))]
                           )
                         }),
+                        _vm._v(" "),
+                        _c("p", [
+                          _vm._v(
+                            "Загружено " +
+                              _vm._s(
+                                new Date(m.created_at).toLocaleDateString("ru")
+                              )
+                          ),
+                        ]),
+                        _vm._v(" "),
+                        m.telegram
+                          ? _c("p", [
+                              _vm._v("Загружено: " + _vm._s(m.telegram)),
+                            ])
+                          : _vm._e(),
                       ],
                       2
                     ),
