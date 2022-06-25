@@ -32,25 +32,43 @@ def start(m, res=False):
 def handle_docs_photo(message):
     try:
 
-        # Получаем отправленый файл
-        file_info = bot.get_file(message.document.file_id)
-        downloaded_file = bot.download_file(file_info.file_path)  # Качаем файл
+        if message.content_type == 'document':
+            # Получаем отправленый файл
+            file_info = bot.get_file(message.document.file_id)
+            downloaded_file = bot.download_file(file_info.file_path)  # Качаем файл
 
-        src = 'temp/' + message.document.file_name  # Как и куда будет записыватся файл
-        with open(src, 'wb') as new_file:  # Создание фаила во временной папке
-            new_file.write(downloaded_file)
+            src = 'temp/' + message.document.file_name  # Как и куда будет записыватся файл
+            with open(src, 'wb') as new_file:  # Создание фаила во временной папке
+                new_file.write(downloaded_file)
 
-        y.upload('temp/{0}'.format(message.document.file_name),
-                 'LAbot/{0}'.format(message.document.file_name))  # Загрузка фаила на Я.Диск
-        b = y.publish('LAbot/{0}'.format(message.document.file_name))   
-              
-        # Удаление фаила из временной папки
-        os.remove('temp/{0}'.format(message.document.file_name))
+            y.upload('temp/{0}'.format(message.document.file_name),
+                    'LAbot/{0}'.format(message.document.file_name))  # Загрузка фаила на Я.Диск
+            b = y.publish('LAbot/{0}'.format(message.document.file_name))   
+                
+            # Удаление фаила из временной папки
+            os.remove('temp/{0}'.format(message.document.file_name))
 
-        # Уведомляем о том что фаил  загружен 'Фаил загружен! Теоретически....' и даём ссылку на файл
-        bot.reply_to(message, 'Файл загружен! Теоретически....Ссылка:{0}'.format( y.get_download_link('LAbot/{0}'.format(message.document.file_name))))
+            # Уведомляем о том что фаил  загружен 'Фаил загружен! Теоретически....' и даём ссылку на файл
+            bot.reply_to(message, 'Файл загружен! Теоретически....Ссылка:{0}'.format( y.get_download_link('LAbot/{0}'.format(message.document.file_name))))
         
-        
+        elif message.content_type == 'photo':
+            # Получаем отправленый файл
+            file_info = bot.get_file(message.photo[len(message.photo) - 1].file_id)
+            downloaded_file = bot.download_file(file_info.file_path)  # Качаем файл
+
+            src = 'temp/' + message.photo[1].file_id  # Как и куда будет записыватся файл
+            with open(src, 'wb') as new_file:  # Создание фаила во временной папке
+                new_file.write(downloaded_file)
+
+            y.upload('temp/{0}'.format(message.photo[1].file_id),
+                    'LAbot/{0}'.format(message.photo[1].file_id))  # Загрузка фаила на Я.Диск
+            b = y.publish('LAbot/{0}'.format(message.photo[1].file_id))   
+                
+            # Удаление фаила из временной папки
+            os.remove('temp/{0}'.format(message.photo[1].file_id))
+
+            # Уведомляем о том что фаил  загружен 'Фаил загружен! Теоретически....' и даём ссылку на файл
+            bot.reply_to(message, 'Файл загружен! Теоретически....Ссылка:{0}'.format( y.get_download_link('LAbot/{0}'.format(message.photo[1].file_id))))
         
 
     except Exception as e:
