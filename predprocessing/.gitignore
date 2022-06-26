@@ -5,3 +5,9 @@ keras_tuner/
 best_model.h5
 test.csv
 train.csv
+ЛизаАлерт.ipynb
+model.zip
+model.h5
+.idea/
+pred_data_crop.zip
+pred_data_crop_minCSV.zip
