@@ -30,6 +30,7 @@
 <h4>Сайт</h4>
 <p>Сайт с решением доступен по адресу: http://archive.lizaalert.xsph.ru/ </p>
 <p>Реквизиты тестового пользователя: email: <b>Liza@alert.ru</b>, пароль: <b>qwerty52</b></p>
+<p>Тестовая беседа с ботом - https://t.me/+K10KwH0gmYUxOGIy</p>
 
 
 
